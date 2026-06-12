@@ -115,7 +115,7 @@ export const metadata: Metadata = {
 
   // 8. Icônes de l'application
   icons: {
-    shortcut: "/favicon.svg",
+    shortcut: "/scryboo.png",
     icon: [{ url: "/favicon.svg" }],
     apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg" }],
   },
@@ -131,11 +131,26 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      {/* <head>
+        <script
+          async
+          src="https://plausible.io/js/pa-85LN_PC5JgRe6vTxDXxly.js"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.plausible = window.plausible || function() {
+              (window.plausible.q = window.plausible.q || []).push(arguments)
+            };
+            window.plausible.init = window.plausible.init || function(i) {
+              (window.plausible.o = i || {})
+            };
+            window.plausible.init();`,
+          }}
+        />
+      </head> */}
       <body className="min-h-full flex flex-col">
         <Navbar />
-        <main className="">
-          {children}
-        </main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>

@@ -1,3 +1,5 @@
+'use client'
+
 import JournalPage from '@/components/pages/Journal'
 import React from 'react'
 
