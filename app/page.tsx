@@ -1,64 +1,57 @@
-import Image from "next/image";
+import EcosystemGrid from "@/components/layout/EcosystemGrid";
+import Hero from "@/components/layout/Hero";
+import Innovation from "@/components/layout/Innovation";
+import Journal from "@/components/layout/Journal";
 
-export default function Home() {
+
+export default function App() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-[#08080d] text-zinc-100 antialiased">
+      <main>
+        <Hero />
+        <EcosystemGrid />
+        <Innovation />
+        <Journal />
+
+        {/* CTA Band */}
+        <section className="relative bg-[#0b0b13] border-t border-white/[0.075]">
+          <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
+            <div className="rounded-[30px] bg-[linear-gradient(180deg,rgba(255,255,255,0.051),rgba(255,255,255,0.019))] border border-white/[0.105] px-7 sm:px-12 md:px-16 py-14 md:py-20 relative overflow-hidden">
+              <div className="absolute right-[-70px] top-[-80px] w-[320px] h-[260px] rounded-full blur-[80px] opacity-70 bg-[radial-gradient(circle_at_center,rgba(167,152,255,0.33),rgba(224,255,138,0.12),transparent_70%)] pointer-events-none" />
+              <div className="relative max-w-3xl">
+                <div className="text-[11.8px] uppercase tracking-widest text-zinc-400 font-mono">
+                  Scryboo · Gratuit pour tous
+                </div>
+                <h3 className="font-display text-[34px] sm:text-[44px] md:text-[54px] tracking-[-0.022em] text-zinc-100 mt-4 leading-[1.04]">
+                  95% de Scryboo est gratuit. Pour toujours.
+                </h3>
+                <p className="text-[16.4px] text-zinc-400 mt-4 max-w-xl">
+                  Comme Google et Facebook : l’accès de base est libre, sans
+                  pub, sans tracking. Les équipes Pro débloquent API, batch
+                  volumineux et AI illimitée. Commencez sans compte sur
+                  app.scryboo.com.
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <a
+                    href="https://app.scryboo.com"
+                    className="inline-flex items-center gap-2 rounded-full bg-white text-zinc-900 font-[630] px-5 py-3 text-[14.6px] hover:bg-zinc-100"
+                  >
+                    Ouvrir Scryboo Tools — Gratuit
+                  </a>
+                  <a
+                    href="#journal"
+                    className="text-[14.2px] text-zinc-300 hover:text-white"
+                  >
+                    Lire le Journal →
+                  </a>
+                </div>
+                <div className="mt-6 text-[12.6px] text-zinc-500">
+                  Free-forever • 0 pub • 0 tracking • SSO unifié • Export libre
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
