@@ -1,3 +1,5 @@
+'use client'
+
 import { useParams } from "next/navigation";
 import { getPost } from "@/data/blog";
 import { getTool } from "@/data/tools";

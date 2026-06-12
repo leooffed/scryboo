@@ -6,9 +6,9 @@ import Link from "next/link";
 
 export default function ToolsIndex() {
   useSEO({
-    title: "Tous les outils Scryboo — Gratuit, local, sans pub",
+    title: "Tous les outils Scryboo — Gratuit, local, instantané",
     description:
-      "42 outils web gratuits : PDF, images, texte, dev, QR. 100% local, privacy-by-design. Comme Google : gratuit pour toujours.",
+      "43 outils web gratuits : PDF, images, texte, dev, QR. 100% local, privacy-by-design. Comme Google : gratuit.",
     canonical: "/outils",
   });
 
@@ -30,8 +30,7 @@ export default function ToolsIndex() {
         </div>
 
         <div className="mt-10 rounded-[20px] border border-[#e6ff9c]/18 bg-[linear-gradient(180deg,rgba(226,255,123,0.07),rgba(226,255,123,0.022))] px-5 py-4 text-[14.2px] text-[#e3f9c7]">
-          <b>95% gratuit pour toujours, comme Google et Facebook.</b> Sans pub,
-          sans tracking. Les équipes Pro paient API / batch / AI.
+          <b>95% gratuit, comme Google et Facebook.</b> Innovanteusement, nous avons choisi de monétiser uniquement les usages professionnels.
         </div>
 
         {Object.entries(toolsByCategory).map(([cat, list]) => (

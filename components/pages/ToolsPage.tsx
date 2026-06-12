@@ -78,7 +78,7 @@ export default function ToolPage() {
             <span className="px-2.5 py-1 rounded-full bg-[#e6ff9a]/10 text-[#d7f98a] border border-[#e6ff9a]/15">
               100% Gratuit
             </span>
-            <span>• Sans compte • Sans pub</span>
+            <span>• Innovante • free et display</span>
           </div>
           <h1 className="font-display text-[40px] md:text-[58px] leading-[1.02] tracking-[-0.025em] text-zinc-100 max-w-3xl">
             {tool.h1}
@@ -108,7 +108,7 @@ export default function ToolPage() {
           </div>
 
           <p className="mt-3 text-[12.9px] text-zinc-500">
-            95% des outils Scryboo sont gratuits pour toujours, comme Google et
+            Des outils Scryboo sont gratuits, comme Google et
             Facebook. Aucune carte requise.
           </p>
         </header>
@@ -182,11 +182,10 @@ export default function ToolPage() {
             </h3>
             <p className="text-zinc-400">
               Scryboo suit le même modèle que Google et Meta : l’accès aux
-              outils de base est gratuit, sans pub, sans tracking, pour
-              toujours. On monétise uniquement les usages pro : API, batch
+              outils de base est gratuit,tracking pour ameliorer nos produits: API, batch
               volumineux, AI illimitée, support prioritaire. Vous pouvez
               utiliser <strong className="text-zinc-200">{tool.name}</strong>{" "}
-              sans créer de compte.
+              Precis et sans limite, aussi longtemps que vous le souhaitez.
             </p>
 
             <h3 className="font-display text-[22px] text-zinc-100 mt-10">

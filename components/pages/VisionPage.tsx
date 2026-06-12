@@ -24,7 +24,7 @@ export default function VisionPage() {
               L'écosystème technologique qui propulse vos idées.
             </h1>
             <p className="text-[18px] text-zinc-300 mt-6 leading-relaxed">
-              Scryboo est né à Dakar, grandi à Paris. On construit les outils
+              Scryboo est né en Afrique, grandi dans le monde. On construit les outils
               qu'on aurait aimé avoir : rapides même en 3G, respectueux de vos
               données, pensés pour les contextes locaux — Orange Money, Wave,
               XOF, FR/WO.
@@ -46,7 +46,7 @@ export default function VisionPage() {
               {
                 Icon: LockKeyhole,
                 title: "Privacy by design",
-                text: "Traitement local WASM. 0 tracking. 0 pub. Vos fichiers ne quittent jamais votre appareil.",
+                text: "Traitement local WASM. tracking. pub. Vos fichiers ne quittent jamais votre appareil.",
               },
             ].map((b) => (
               <div
@@ -69,10 +69,10 @@ export default function VisionPage() {
             </h2>
             <p className="text-[#cde8a6] mt-3 max-w-2xl text-[16.2px] leading-relaxed">
               Comme Google et Facebook : l’accès aux outils de base est gratuit,
-              sans pub, sans compte — et le restera. On monétise uniquement les
-              usages pro : API, volumes, AI illimitée, support prioritaire.
-              C’est ce qui nous permet de garder l’écosystème ouvert à tous, de
-              Africa.
+              tracking pour ameliorer nos produits: API, batch
+              volumineux, AI illimitée, support prioritaire. Vous pouvez
+              utiliser <strong className="text-zinc-200">Createur de cv <Link href="/outils/createur-de-cv">ici</Link></strong>{" "}
+              Precis et sans limite, aussi longtemps que vous le souhaitez.
             </p>
           </div>
 
