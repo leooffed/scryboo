@@ -197,8 +197,7 @@ export default function Hero() {
           adapté aux contextes locaux — Afrique francophone et au-delà.
           <span className="text-zinc-300">
             {" "}
-            La majorité des outils sont 100% gratuits, sans compte — comme
-            Google et Facebook.
+            La majorité des outils sont 100% gratuits, Made in Africa.
           </span>
         </motion.p>
 
