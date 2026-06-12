@@ -1,5 +1,4 @@
 import ToolPage from '@/components/pages/ToolsPage'
-import React from 'react'
 
 const page = () => {
   return (

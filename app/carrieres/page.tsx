@@ -1,6 +1,5 @@
 import CareersPage from '@/components/pages/Carry'
 
-
 const page = () => {
   return (
     <div>

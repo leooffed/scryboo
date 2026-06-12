@@ -1,7 +1,7 @@
 import EcosystemGrid from "@/components/layout/EcosystemGrid";
 import Hero from "@/components/layout/Hero";
 import Innovation from "@/components/layout/Innovation";
-import Journal from "@/components/layout/Journal";
+import JournalHub from "@/components/layout/JournalHub";
 
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
         <Hero />
         <EcosystemGrid />
         <Innovation />
-        <Journal />
+        <JournalHub />
 
         {/* CTA Band */}
         <section className="relative bg-[#0b0b13] border-t border-white/[0.075]">

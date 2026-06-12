@@ -57,7 +57,7 @@ const morePosts = [
   },
 ];
 
-export default function Journal() {
+export default function JournalHub() {
   return (
     <section
       id="journal"
