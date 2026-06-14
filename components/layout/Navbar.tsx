@@ -41,7 +41,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative size-8 rounded-[11px] bg-[#ededf6] text-[#0b0b10] flex items-center justify-center shadow-sm">
               <span className="font-display text-[17px] font-600 tracking-tight">
-                <Image src="/scryboo.png" alt="Scryboo" width={26} height={26} />
+                <Image src="/favicon.svg" alt="Scryboo" width={26} height={26} />
               </span>
               <div className="absolute inset-0 rounded-[11px] ring-1 ring-black/8"></div>
             </div>

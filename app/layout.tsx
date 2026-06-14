@@ -116,7 +116,7 @@ export const metadata: Metadata = {
 
   // 8. Icônes de l'application
   icons: {
-    shortcut: "/scryboo.png",
+    shortcut: "/favicon.svg",
     icon: [{ url: "/favicon.svg" }],
     apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg" }],
   },
