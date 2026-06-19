@@ -142,7 +142,7 @@ export default function Footer() {
             </div>
             <ul className="space-y-2.5 text-[13.4px] text-zinc-400">
               <li>
-                <Link href="/confidentialite" className="hover:text-zinc-100">
+                <Link href="/confidential" className="hover:text-zinc-100">
                   Confidentialité
                 </Link>
               </li>

@@ -120,6 +120,9 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.svg" }],
     apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg" }],
   },
+  other: {
+    "google-adsense-account": "ca-pub-3686586093852095",
+  },
 };
 
 export default function RootLayout({
