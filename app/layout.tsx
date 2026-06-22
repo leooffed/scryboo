@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script"; // Importation pour Plausible propre
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,24 +16,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://scryboo.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.scryboo.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
-  // 1. Titres dynamiques (L'accroche premium de la maison mère)
+  // 1. Titres dynamiques (Le template injectera automatiquement le H1 des sous-pages)
   title: {
     default: "Scryboo | L'écosystème technologique de votre succès digital",
     template: "%s | Scryboo",
   },
 
-  // 2. Descriptions percutantes (Met en avant la rapidité, l'absence de serveur côté client et la cible)
   description:
     "Scryboo conçoit des applications rapides, sans friction et pensées pour la productivité. Accédez à notre suite d'outils web gratuits exécutés directement dans votre navigateur. Innovation, sécurité locale et solutions adaptées aux professionnels en Afrique francophone et au-delà.",
 
-  // 3. Mots-clés officiels (Mélange de la marque, des outils et du positionnement local)
   keywords: [
-    // Marque & Écosystème
     "scryboo",
     "scryboo tools",
     "startup tech afrique",
@@ -42,28 +40,27 @@ export const metadata: Metadata = {
     "convertisseur PDF en Word",
     "generateur de website pour votre entreprise",
     "generateur de CV en ligne",
-    "calculateur tva cfa",
     "outils de compression d'images",
     "outils de conversion de fichiers",
     "calculateur de prix pour les freelances",
     "creation d'une facture",
-    // Outils & Caractéristiques techniques
     "outils web gratuits",
     "conversion pdf sans limite",
     "compression image navigateur",
     "outils ia gratuits",
     "zéro installation",
     "traitement local navigateur",
-    // Positionnement marché
     "outils francophones",
     "générateur cv adapté",
     "calculateur tva cfa",
+    "Outils gratuits CV",
+    "Meilleurs outils pour CV",
+    "Comment Structurer une demande d'emplois CV",
   ],
 
   authors: [{ name: "Scryboo Engineering", url: SITE_URL }],
   creator: "Scryboo",
 
-  // 4. Indexation par les robots de Google (Ouverture totale pour la vitrine)
   robots: {
     index: true,
     follow: true,
@@ -76,7 +73,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // 5. Gestion du multilingue (Optionnel mais recommandé si tu vises FR et EN à terme)
   alternates: {
     canonical: SITE_URL,
     languages: {
@@ -85,18 +81,17 @@ export const metadata: Metadata = {
     },
   },
 
-  // 6. Open Graph (Ce qui s'affiche quand on partage scryboo.com sur LinkedIn, WhatsApp, etc.)
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
-    title: "Scryboo | Innover pour propulser vos idées",
+    title: "Scryboo | Innover pour propulser vos ideas",
     description:
       "Découvrez Scryboo Tools et notre écosystème d'applications. Des outils professionnels gratuits, exécutés instantanément dans votre navigateur pour une confidentialité totale.",
     siteName: "Scryboo",
     images: [
       {
-        url: "/og-image-scryboo.png", // Crée un beau visuel corporate sombre/premium avec le logo Scryboo
+        url: "/og-image-scryboo.png",
         width: 1200,
         height: 630,
         alt: "Écosystème Technologique Scryboo",
@@ -104,17 +99,15 @@ export const metadata: Metadata = {
     ],
   },
 
-  // 7. Twitter / X Cards
   twitter: {
     card: "summary_large_image",
     title: "Scryboo | Outils Web & Applications Innovantes",
     description:
       "La suite d'outils qui accélère votre quotidien numérique. Gratuit, rapide et respectueux de vos données.",
     images: ["/og-image-scryboo.png"],
-    creator: "@ScrybooHQ", // Mets le futur compte de la startup ici
+    creator: "@ScrybooHQ",
   },
 
-  // 8. Icônes de l'application
   icons: {
     shortcut: "/favicon.svg",
     icon: [{ url: "/favicon.svg" }],
@@ -131,31 +124,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // FIX 1: Remplacement de "en" par "fr" pour correspondre au marché et au SEO ciblé
     <html
-      lang="en"
+      lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <Analytics />
-      {/* <head>
-        <script
-          async
-          src="https://plausible.io/js/pa-85LN_PC5JgRe6vTxDXxly.js"
-        ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.plausible = window.plausible || function() {
-              (window.plausible.q = window.plausible.q || []).push(arguments)
-            };
-            window.plausible.init = window.plausible.init || function(i) {
-              (window.plausible.o = i || {})
-            };
-            window.plausible.init();`,
-          }}
-        />
-      </head> */}
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-[#08080d]">
+        {/* OPTIMISATION: Intégration propre de Plausible via Next.js Script si activé à l'avenir */}
+        {/* <Script 
+          src="https://plausible.io/js/pa-85LN_PC5JgRe6vTxDXxly.js" 
+          data-domain="scryboo.com"
+          strategy="afterInteractive" 
+        /> */}
+
+        {/* FIX 2: Le composant Analytics vit désormais obligatoirement dans le body */}
+        <Analytics />
+
         <Navbar />
-        <main className="">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

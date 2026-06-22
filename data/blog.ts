@@ -1,3 +1,4 @@
+// blog.ts
 export type BlogPost = {
   slug: string;
   title: string;
@@ -26,13 +27,12 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "createur-de-site-web-en-3-clics",
-    title: "Createur de site web en 3 clics",
+    title: "Créateur de site web en 3 clics",
     excerpt: "Lancez votre site vitrine instantanément. 100% gratuit, pour toujours.",
     date: "2026-02-05",
     toolSlug: "createur-de-site-web",
-    content: "Notre compresseur WASM tourne dans votre navigateur. 200 images en 4s. Idéal pour les boutiques à Dakar, Abidjan, Douala."
+    content: "Plus besoin de savoir coder ou de payer un hébergement cher. Scryboo vous permet de générer une page vitrine pro pour votre activité en Afrique en quelques secondes, optimisée pour s'ouvrir instantanément sur mobile."
   },
-  
   {
     slug: "bio-instagram-ia-francophone",
     title: "Générateur de Bio IA localisé FR / Wolof",
@@ -42,7 +42,8 @@ export const posts: BlogPost[] = [
     content: "Scryboo AI comprend le contexte ouest-africain. Générez des bios Instagram / LinkedIn qui sonnent vrai."
   },
   {
-    slug: "infographie des-5-outils-gratuits-pour-les-entrepreneurs-africains",
+    // CORRIGÉ : Remplacement des espaces par des tirets
+    slug: "infographie-des-5-outils-gratuits-pour-les-entrepreneurs-africains",
     title: "Infographie des 5 outils gratuits pour les entrepreneurs africains",
     excerpt: "Découvrez les 5 outils gratuits qui peuvent transformer votre activité entrepreneuriale en Afrique francophone.",
     date: "2026-01-29",
@@ -50,12 +51,13 @@ export const posts: BlogPost[] = [
     content: "Dans cette infographie, nous mettons en lumière les 5 outils gratuits essentiels pour les entrepreneurs africains. De la création de designs percutants à la gestion efficace de votre présence en ligne, ces outils sont conçus pour vous aider à réussir dans le paysage numérique dynamique de l'Afrique francophone."
   },
   {
-    slug: "createur de cv gratuit pour les demandeurs d'emploi en Afrique",
-    title: "Createur de CV gratuit pour les demandeurs d'emploi en Afrique",
+    // CORRIGÉ : Remplacement des espaces par des tirets
+    slug: "createur-de-cv-gratuit-pour-les-demandeurs-d-emploi-en-afrique",
+    title: "Créateur de CV gratuit pour les demandeurs d'emploi en Afrique",
     excerpt: "Créez un CV professionnel en quelques clics, 100% gratuit.",
     date: "2026-01-29",
     toolSlug: "createur-de-cv",
-    content: "Notre createur de CV vous permet de créer un document professionnel en quelques clics. 100% gratuit, comme Google Docs."
+    content: "Notre créateur de CV vous permet de créer un document professionnel en quelques clics. 100% gratuit, comme Google Docs."
   },
   {
     slug: "qr-code-orange-money-wave",
@@ -67,4 +69,4 @@ export const posts: BlogPost[] = [
   },
 ];
 
-export const getPost = (slug:string)=> posts.find(p=>p.slug===slug);
+export const getPost = (slug: string) => posts.find(p => p.slug === slug);

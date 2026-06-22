@@ -1,25 +1,27 @@
+// app/journal/page.tsx
 import { posts } from "@/data/blog";
 import Link from "next/link";
 import type { Metadata } from "next";
 
-// 1. Métadonnées SEO statiques et puissantes côté serveur
-export const metadata: Metadata = {
-  title: "Journal Scryboo — Guides outils, nouveautés & productivité",
+// Importation de ton utilitaire SEO global
+import { generateSeoObject } from "@/lib/seo";
+
+// 1. Métadonnées unifiées et puissantes via ton utilitaire centralisé
+export const metadata: Metadata = generateSeoObject({
+  title: "Journal — Guides outils, nouveautés & productivité",
   description:
     "Le blog produit de Scryboo. Chaque outil expliqué, cas d’usage pour l'Afrique francophone et astuces de productivité par l’équipe d'administration.",
-  alternates: {
-    canonical: "https://scryboo.com/journal",
-  },
-};
+  canonicalPath: "/journal",
+});
 
 export default function JournalPage() {
-  // Optionnel : Trier les posts du plus récent au plus ancien si ce n'est pas fait dans ton fichier data
+  // Tri sécurisé des posts du plus récent au plus ancien
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
   return (
-    <div className="min-h-screen bg-[#08080d] text-zinc-100">
+    <div className="min-h-screen bg-[#08080d] text-zinc-100 antialiased">
       <main className="pt-32 max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 pb-24">
         <div className="text-[11.7px] uppercase tracking-widest text-zinc-500 font-mono">
           Journal · Centre de ressources
@@ -37,10 +39,10 @@ export default function JournalPage() {
           </span>
         </p>
 
-        {/* Grille d'articles */}
+        {/* Grille d'articles dynamique */}
         <div className="grid md:grid-cols-2 gap-6 mt-12">
           {sortedPosts.map((p) => {
-            // Formatage de la date côté serveur (zéro Hydration Mismatch)
+            // Formatage de la date natif côté serveur (Zéro Hydration Mismatch)
             const formattedDate = new Date(p.date).toLocaleDateString("fr-FR", {
               day: "numeric",
               month: "long",
