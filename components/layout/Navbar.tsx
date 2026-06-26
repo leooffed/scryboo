@@ -8,10 +8,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Vision", href: "#vision" },
-  { label: "Produits", href: "#produits" },
-  { label: "Infrastructure", href: "#infrastructure" },
-  { label: "Journal", href: "#journal" },
+  { label: "Vision", href: "/outils" },
+  { label: "Produits", href: "/products" },
+  { label: "Infrastructure", href: "/statut" },
+  { label: "Journal", href: "/journal" },
 ];
 
 export default function Navbar() {
