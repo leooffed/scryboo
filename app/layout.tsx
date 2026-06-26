@@ -130,7 +130,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-         <meta name="google-adsense-account" content="ca-pub-3686586093852095"></meta>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-3686586093852095"
+        ></meta>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3686586093852095"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body className="min-h-full flex flex-col bg-[#08080d]">
         {/* OPTIMISATION: Intégration propre de Plausible via Next.js Script si activé à l'avenir */}
