@@ -1,116 +1,210 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-// 1. Configuration SEO native gérée sur le serveur
+
+
 export const metadata: Metadata = {
-  title: "À propos — L'histoire et la mission de Scryboo",
+  title: "À propos de Scryboo — La startup tech africaine qui connecte les talents",
   description:
-    "Découvrez Scryboo, une startup technologique innovante qui bâtit un écosystème d'applications fluides, sécurisées et accessibles. Notre modèle freemium s'inspire des plus grands standards de la tech.",
+    "Scryboo est une startup panafricaine qui construit un écosystème d'applications utiles, gratuites à 95 %, respectueuses de la vie privée et pensées pour l'Afrique. Découvrez notre mission, nos produits et notre vision.",
   alternates: {
     canonical: "https://scryboo.com/a-propos",
+  },
+  // Optionnel : ajouter openGraph pour les partages
+  openGraph: {
+    title: "À propos de Scryboo — L'écosystème tech made in Africa",
+    description:
+      "Scryboo, startup panafricaine, conçoit des outils web gratuits, confidentiels et local-first pour les indépendants et les PME du continent.",
+    url: "https://scryboo.com/a-propos",
+    siteName: "Scryboo",
+    locale: "fr_FR",
+    type: "website",
   },
 };
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#08080d] text-zinc-100 antialiased">
-      <main className="pt-32 pb-24 max-w-4xl mx-auto px-6 sm:px-10 lg:px-14">
-        <div className="text-[11.7px] uppercase tracking-widest text-zinc-500 font-mono">
-          Manifeste
+    <div className="min-h-screen bg-white text-[#202124]">
+      <main className="max-w-[760px] mx-auto px-5 sm:px-8 py-14">
+        <div className="text-[12.5px] text-[#5f6368] uppercase tracking-wide">
+          À propos
         </div>
-
-        <h1 className="font-display text-[44px] md:text-[56px] tracking-[-0.025em] mt-2 font-bold text-white leading-tight">
-          Scryboo, un hub technologique d'utilité publique.
+        <h1 className="text-[36px] sm:text-[44px] font-[650] tracking-[-0.022em] mt-2">
+          Scryboo, l’écosystème tech qui rend l’Afrique plus productive
         </h1>
 
-        {/* Corps du texte - Style éditorial premium */}
-        <div className="mt-10 text-zinc-300 text-[16.5px] leading-relaxed space-y-6">
-          <p>
-            Scryboo est une startup technologique dynamique, innovante et
-            résolument tournée vers l'excellence produit. Notre mission est
-            simple : concevoir et déployer un écosystème d'applications
-            interconnectées, rapides et profondément respectueuses de votre vie
-            privée, en suivant les standards de robustesse d'acteurs de
-            référence mondiaux.
-          </p>
+        <div className="text-[16.5px] text-[#3c4043] leading-relaxed space-y-5 mt-6">
+          {/* Introduction */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Notre mission
+            </h2>
+            <p>
+              Scryboo est née d’une conviction simple : chaque entrepreneur,
+              créatif ou étudiant africain mérite des outils numériques puissants,
+              sans barrières techniques ni financières. Nous concevons un
+              écosystème d’applications interconnectées qui couvre les besoins
+              essentiels du quotidien professionnel, de la création de PDF à la
+              gestion d’entreprise, en passant par l’intelligence artificielle.
+            </p>
+            <p>
+              Notre siège est basé en Afrique, avec une équipe distribuée sur
+              tout le continent. Nous croyons au potentiel du local-first :
+              nos services sont hébergés en périphérie (Edge) à proximité des
+              utilisateurs africains, pour une rapidité maximale même en 3G.
+            </p>
+          </section>
 
-          <p>
-            L'ensemble de notre architecture s'organise autour d'un portail
-            unifié. La plateforme mère{" "}
-            <b className="text-zinc-100 font-medium">scryboo.com</b> centralise
-            l'accès et l'identité de nos utilisateurs, tandis que nos solutions
-            logicielles spécialisées s'exécutent sur des infrastructures dédiées
-            :{" "}
-            <span className="text-zinc-100 font-mono text-[15px]">
-              app.scryboo.com
-            </span>{" "}
-            pour notre suite d'outils,{" "}
-            <span className="text-zinc-100 font-mono text-[15px]">
-              ai.scryboo.com
-            </span>{" "}
-            pour nos technologies d'intelligence artificielle, et très
-            prochainement nos modules de gestion commerciale, de réservation et
-            de communication.
-          </p>
+          {/* Écosystème */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Un hub, six applications
+            </h2>
+            <p>
+              Scryboo, c’est six produits complémentaires accessibles avec un
+              seul compte (SSO). Chacun résout un problème concret :
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Tools</strong> — 42 outils web gratuits (PDF, image,
+                QR code, texte…) pour les tâches rapides.
+              </li>
+              <li>
+                <strong>Flow</strong> — ERP et comptabilité adaptés aux normes
+                africaines (OHADA, SYSCOA). Factures, stocks, CRM.
+              </li>
+              <li>
+                <strong>Now</strong> — Constructeur de sites web et boutiques
+                en ligne, avec templates prêts à l’emploi.
+              </li>
+              <li>
+                <strong>AI</strong> — Laboratoire d’intelligence artificielle
+                pour générer du texte, des images et automatiser des workflows.
+              </li>
+              <li>
+                <strong>Book</strong> — Système de réservation en ligne pour
+                les prestataires de services (coiffeurs, consultants, etc.).
+              </li>
+              <li>
+                <strong>Pulse</strong> — Suite sociale et analytics pour
+                suivre sa marque et interagir avec sa communauté.
+              </li>
+            </ul>
+            <p className="mt-3">
+              Toutes ces applications sont hébergées sur des sous-domaines
+              distincts (app.scryboo.com, flow.scryboo.com…) mais partagent un
+              socle technique commun et une identité visuelle cohérente.
+            </p>
+          </section>
 
-          <h2 className="text-white font-display text-[26px] font-bold pt-6 tracking-tight">
-            Un modèle économique transparent et honnête
-          </h2>
-          <p>
-            Inspiré par les géants du web, notre modèle repose sur une
-            accessibilité totale.{" "}
-            <b className="text-zinc-100 font-semibold">
-              95% de nos utilitaires quotidiens sont et resteront 100% gratuits
-            </b>
-            , sans création de compte obligatoire et sans aucune pollution
-            publicitaire.
-          </p>
-          <p>
-            Nous assurons la viabilité et le développement de notre
-            infrastructure en monétisant exclusivement les usages industriels et
-            professionnels : accès aux API à forte charge, traitements de
-            volumes en masse, intégrations d'intelligence artificielle
-            illimitées et support technique prioritaire pour les entreprises.
-          </p>
+          {/* Modèle économique */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Un modèle économique transparent
+            </h2>
+            <p>
+              Nous avons choisi la transparence : <strong>95 % de nos outils
+                sont gratuits, sans publicité intrusive et sans collecte de
+                données personnelles.</strong> Comme Google et Facebook, l’accès
+              de base reste libre pour tous, parce que nous pensons que la
+              productivité ne doit pas être un luxe.
+            </p>
+            <p>
+              Notre rentabilité repose sur les offres professionnelles (API,
+              traitement par lots, fonctionnalités avancées) et sur
+              l’abonnement Pro pour les utilisateurs ayant des besoins de
+              volume. Ainsi, les indépendants et les petites entreprises
+              bénéficient gratuitement d’outils de qualité, tandis que les
+              grands comptes contribuent au développement.
+            </p>
+          </section>
 
-          <h2 className="text-white font-display text-[26px] font-bold pt-6 tracking-tight">
-            Une ingénierie Local-First & Multi-Régions
-          </h2>
-          <p>
-            Née à Dakar et opérée depuis Paris, Scryboo fait le pont entre les
-            réalités économiques locales et les technologies mondiales les plus
-            avancées. Nos architectures intègrent nativement les paiements par
-            réseaux mobiles (Orange Money, Wave), gèrent les devises régionales
-            (XOF, XAF) et s'adaptent à la diversité culturelle à travers des
-            interfaces traduites en Français, Anglais et Wolof.
-          </p>
-          <p>
-            Grâce à un déploiement sur des serveurs distribués à la périphérie
-            des réseaux (Edge AI et Edge Workers), nous garantissons un temps de
-            réponse instantané en Afrique, en Europe et en Amérique du Nord,
-            adossé à un engagement de haute disponibilité.
-          </p>
+          {/* Technologie et confidentialité */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Une technologie respectueuse de la vie privée
+            </h2>
+            <p>
+              Tous nos outils fonctionnent selon le principe du{" "}
+              <strong>local-first</strong> : les fichiers que vous traitez
+              (PDF, images, etc.) ne quittent jamais votre appareil. Les calculs
+              sont effectués directement dans le navigateur grâce au WebAssembly
+              (WASM), garantissant confidentialité et rapidité. Aucun serveur
+              n’a accès à vos documents.
+            </p>
+            <p>
+              Nous sommes conformes au RGPD et nous engageons à ne jamais
+              revendre vos données. Notre infrastructure est déployée sur des
+              serveurs Edge en Afrique, en Europe et en Amérique du Nord pour
+              une latence minimale.
+            </p>
+          </section>
 
-          {/* Section Contacts et Actions */}
-          <div className="pt-8 mt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[15px]">
-            <div className="text-zinc-400">
-              Une question ou un partenariat ? Écrivez-nous sur :{" "}
+          {/* Équipe et recrutement */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Une équipe africaine, des valeurs fortes
+            </h2>
+            <p>
+              Scryboo est portée par des ingénieurs et des designers passionnés,
+              répartis entre plusieurs pays d’Afrique. Nous travaillons en
+              remote-first avec un rythme de développement continu. Nos valeurs
+              : l’excellence technique, la simplicité d’usage, l’inclusion
+              numérique et la transparence.
+            </p>
+            <p>
+              <Link
+                href="/carrieres"
+                className="text-[#1a73e8] underline hover:no-underline"
+              >
+                Consultez nos offres d’emploi →
+              </Link>
+            </p>
+          </section>
+
+          {/* Contact */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Nous contacter
+            </h2>
+            <p>
+              Pour les partenariats, les demandes presse ou simplement pour
+              échanger, écrivez-nous à{" "}
               <a
-                href="mailto:hello@scryboo.com?subject=Contact depuis la vitrine Scryboo"
-                className="text-white underline underline-offset-4 decoration-white/[0.2] hover:text-blue-400 hover:decoration-blue-400 transition-all font-medium"
+                href="mailto:hello@scryboo.com"
+                className="text-[#1a73e8] underline hover:no-underline"
               >
                 hello@scryboo.com
               </a>
-            </div>
+              . Nous sommes également présents sur les réseaux sociaux
+              (Twitter/X, LinkedIn).
+            </p>
+          </section>
 
-            <Link
-              href="/carrieres"
-              className="inline-flex items-center gap-1.5 text-white font-semibold hover:text-zinc-300 transition-colors"
-            >
-              L'équipe s'agrandit, rejoignez-nous
-              <span className="font-mono">→</span>
-            </Link>
-          </div>
+          {/* Référence rapide aux produits (SEO) */}
+          <section>
+            <h2 className="text-[20px] font-semibold text-[#202124] mb-2">
+              Découvrez nos produits
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { name: "Tools", url: "https://app.scryboo.com" },
+                { name: "Flow", url: "https://flow.scryboo.com" },
+                { name: "Now", url: "https://now.scryboo.com" },
+                { name: "AI", url: "https://ai.scryboo.com" },
+                { name: "Book", url: "https://book.scryboo.com" },
+                { name: "Pulse", url: "https://pulse.scryboo.com" },
+              ].map((product) => (
+                <a
+                  key={product.name}
+                  href={product.url}
+                  className="px-4 py-2 rounded-lg border border-gray-200 text-[14px] text-[#1a73e8] hover:bg-gray-50"
+                >
+                  {product.name} →
+                </a>
+              ))}
+            </div>
+          </section>
         </div>
       </main>
     </div>

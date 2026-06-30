@@ -64,10 +64,9 @@ export default function App() {
                     95% de Scryboo est gratuit. Pour toujours.
                   </h3>
                   <p className="text-[16.4px] text-zinc-400 mt-4 max-w-xl">
-                    Comme Google et Facebook : l’accès de base est libre, sans
-                    pub, sans tracking. Les équipes Pro débloquent API, batch
-                    volumineux et AI illimitée. Commencez sans compte sur
-                    app.scryboo.com.
+                    Nous utilisons vos donnees pour ameliorer le produit. Les équipes
+                    Pro débloquent API, batch volumineux et AI illimitée.
+                    Commencez sur app.scryboo.com.
                   </p>
                   <div className="mt-8 flex flex-wrap items-center gap-4">
                     <a
@@ -84,7 +83,7 @@ export default function App() {
                     </a>
                   </div>
                   <div className="mt-6 text-[12.6px] text-zinc-500">
-                    Free-forever • 0 pub • 0 tracking • SSO unifié • Export
+                    Free-forever • Transparent • SSO unifié • Export
                     libre
                   </div>
                 </div>

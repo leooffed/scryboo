@@ -1,164 +1,159 @@
+// app/vision/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Zap, Globe2, LockKeyhole, Heart } from "lucide-react";
 
-// 1. Définition des métadonnées SEO gérées nativement sur le serveur
+
 export const metadata: Metadata = {
-  title: "Vision — Scryboo, l'écosystème technologique d'avenir",
+  title: "Vision Scryboo — Pour une Afrique numérique, rapide et confidentielle",
   description:
-    "Découvrez le manifeste technique et la vision de Scryboo : des architectures Edge-first ultra-rapides, respectueuses de la vie privée et conçues pour l'Afrique francophone et le monde.",
+    "Découvrez la vision de Scryboo : un écosystème d'applications ultra-rapides, local-first, respectueuses de la vie privée, pensées pour l'Afrique. 95 % gratuites, sans publicité intrusive, sans collecte de données.",
   alternates: {
     canonical: "https://scryboo.com/vision",
   },
+  openGraph: {
+    title: "Vision Scryboo — La tech africaine au service de tous",
+    description:
+      "Des outils web gratuits, confidentiels et locaux pour les indépendants et PME d'Afrique. Edge, WASM, paiements mobiles, IA souveraine.",
+    url: "https://scryboo.com/vision",
+    siteName: "Scryboo",
+    locale: "fr_FR",
+    type: "website",
+  },
 };
-
-const benefits = [
-  {
-    icon: Zap,
-    title: "Vitesse extrême",
-    text: "Architecture Edge-first. Fichiers compressés à moins de 48 Ko par utilitaire. Un temps de réponse P95 inférieur à 92 ms pour une exécution instantanée, même hors ligne.",
-  },
-  {
-    icon: Globe2,
-    title: "Ancrage local",
-    text: "Conçu en priorité pour l'Afrique francophone avec l'intégration native du Mobile Money (Wave, Orange Money), la gestion du XOF/XAF et le support multilingue (FR, EN, WO).",
-  },
-  {
-    icon: LockKeyhole,
-    title: "Privacy by Design",
-    text: "Traitement décentralisé en local via WebAssembly (WASM). Zéro téléversement sur serveur, zéro cookie publicitaire. Vos documents ne quittent jamais votre terminal.",
-  },
-];
 
 export default function VisionPage() {
   return (
-    <div className="min-h-screen bg-[#08080d] text-zinc-100 antialiased">
-      <main className="pt-32 pb-24">
-        <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14">
-          {/* Section d'introduction */}
-          <div className="max-w-3xl">
-            <div className="text-[11.7px] uppercase tracking-widest text-zinc-500 font-mono">
-              Notre Vision
-            </div>
-            <h1 className="font-display text-[44px] md:text-[62px] tracking-[-0.027em] leading-[1.05] mt-3 font-bold text-white">
-              L'écosystème technologique qui propulse vos idées.
-            </h1>
-            <p className="text-[18px] text-zinc-400 mt-6 leading-relaxed">
-              Scryboo est né de la volonté de bâtir des infrastructures
-              logicielles d'excellence, accessibles à tous. Nous développons les
-              outils de productivité que nous aurions aimé avoir : légers,
-              extrêmement rapides même sur un réseau 3G instable, et
-              profondément respectueux de l'intégrité de vos données
-              professionnelles.
-            </p>
-          </div>
+    <div className="min-h-screen bg-white text-[#202124]">
+      <main className="max-w-[880px] mx-auto px-5 sm:px-8 lg:px-10 py-14">
+        <div className="text-[12.5px] text-[#5f6368] uppercase tracking-wide">
+          Vision
+        </div>
+        <h1 className="text-[38px] sm:text-[48px] font-[650] tracking-[-0.024em] mt-2 leading-[1.05]">
+          L’écosystème technologique qui propulse vos idées.
+        </h1>
+        <p className="text-[17.5px] text-[#3c4043] mt-5 leading-relaxed">
+          Né en Afrique, porté par une équipe distribuée sur le continent,
+          Scryboo conçoit des applications ultra-rapides, accessibles même en
+          3G, et respectueuses de vos données. Orange Money, Wave, XOF,
+          interfaces en français et langues locales : nous créons pour nos
+          réalités.
+        </p>
 
-          {/* Grille des 3 piliers techniques */}
-          <div className="grid md:grid-cols-3 gap-7 mt-16">
-            {benefits.map((b) => {
-              const IconComponent = b.icon;
-              return (
-                <div
-                  key={b.title}
-                  className="rounded-[24px] bg-white/[0.02] border border-white/[0.08] p-7 hover:border-white/[0.15] transition-all duration-300"
-                >
-                  <IconComponent size={20} className="text-zinc-300" />
-                  <h2 className="text-[19.5px] font-semibold mt-4 text-white tracking-tight">
-                    {b.title}
-                  </h2>
-                  <p className="text-zinc-400 text-[14.5px] mt-2 leading-relaxed">
-                    {b.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Bloc de promesse du modèle économique (Finition Premium) */}
-          <div className="mt-16 rounded-[28px] border border-[#e6ff9c]/15 bg-[linear-gradient(180deg,rgba(226,255,123,0.04),rgba(226,255,123,0.01))] p-8 md:p-10">
-            <div className="flex items-center gap-2 text-[#d8f999] text-[13.5px] font-semibold">
-              <Heart size={15} /> Notre engagement
+        {/* Piliers stratégiques */}
+        <div className="grid md:grid-cols-3 gap-4 mt-10">
+          {[
+            [
+              "Vitesse extrême",
+              "Architecture Edge-first déployée en Afrique, Europe et Amérique. Temps de réponse moyen inférieur à 92 ms. Moins de 48 ko par outil.",
+            ],
+            [
+              "Adaptation locale",
+              "Intégrations natives avec les systèmes de paiement mobile (Orange Money, Wave, MTN Mobile Money). Conformité aux réglementations africaines.",
+            ],
+            [
+              "Confidentialité radicale",
+              "Traitement local via WebAssembly. Aucune donnée utilisateur n’est collectée, stockée ou revendue. Zéro publicité intrusive, zéro tracker.",
+            ],
+          ].map(([t, d]) => (
+            <div key={t} className="g-card p-5">
+              <div className="text-[16.8px] font-[620] text-[#202124]">
+                {t}
+              </div>
+              <div className="text-[14px] text-[#5f6368] mt-2">{d}</div>
             </div>
-            <h2 className="font-display text-[30px] md:text-[36px] text-white mt-3 font-bold tracking-tight">
-              95% gratuit, sans compromis et pour toujours.
-            </h2>
-            <p className="text-[#cde8a6]/80 mt-3 max-w-3xl text-[15.5px] leading-relaxed">
-              À l'instar des plus grands standards du web ouvert, l'accès à nos
-              fonctionnalités fondamentales reste entièrement libre,
-              confidentiel et dépourvu de bannières publicitaires. Notre
-              viabilité financière s'appuie sur la commercialisation d'outils
-              avancés pour les entreprises : connexions par API à forte charge,
-              exécution de fichiers en masse et requêtes d'intelligence
-              artificielle illimitées. Vous pouvez par exemple exploiter notre
-              outil de{" "}
-              <Link
-                href="/outils/createur-de-cv"
-                className="text-white underline underline-offset-4 hover:text-[#d8f999] transition-colors font-medium"
+          ))}
+        </div>
+
+        {/* Gratuité pour toujours */}
+        <div className="mt-10 rounded-[18px] bg-[#e6f4ea] border border-[#cce8d4] p-6">
+          <div className="text-[16px] font-[600] text-[#137333]">
+            95 % gratuit, pour toujours
+          </div>
+          <p className="text-[#1e4620] mt-2 text-[15.3px]">
+            Comme Google et Facebook, l’accès de base à tous nos outils est
+            gratuit, sans publicité envahissante, sans création de compte
+            obligatoire. Nous ne monétisons que les usages professionnels
+            intensifs (API, traitement par lots, IA avancée). Notre engagement
+            : la gratuité pour les particuliers et les petites entreprises,
+            pour toujours.
+          </p>
+        </div>
+
+        {/* Manifeste technique */}
+        <section className="mt-12">
+          <h2 className="text-[22px] font-[620] text-[#202124] mb-4">
+            Notre manifeste technique
+          </h2>
+          <ul className="space-y-3 text-[15.2px] text-[#3c4043]">
+            <li>
+              <strong>Local-first</strong> — Les calculs s’exécutent dans le
+              navigateur, pas sur un serveur distant. Zéro upload, confidentialité
+              absolue.
+            </li>
+            <li>
+              <strong>Edge</strong> — Nos serveurs sont placés au plus près des
+              utilisateurs africains pour des temps de chargement inférieurs à la
+              seconde, même en connexion 3G.
+            </li>
+            <li>
+              <strong>WebAssembly</strong> — Performances quasi-natives dans le
+              navigateur, sans installation. Compression PDF, traitement d’images,
+              IA générative en local.
+            </li>
+            <li>
+              <strong>Souveraineté numérique</strong> — Nous restons indépendants
+              des géants du cloud. Nos technologies sont open source, nos données
+              restent sur le continent.
+            </li>
+            <li>
+              <strong>Innovation frugale</strong> — Chaque kilooctet compte. Nous
+              concevons des logiciels légers pour s’adapter aux réalités des
+              terminaux et des réseaux africains.
+            </li>
+          </ul>
+        </section>
+
+        {/* Feuille de route */}
+        <section className="mt-12">
+          <h2 className="text-[22px] font-[620] text-[#202124] mb-4">
+            Notre ambition pour 2026
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              "Lancement de Flow ERP avec comptabilité OHADA.",
+              "Intégration complète des wallets Mobile Money.",
+              "Déploiement de nœuds Edge dans 15 pays africains.",
+              "Labellisation RGPD et NDPR (Nigeria).",
+              "Traduction de tous les outils en wolof, swahili et haoussa.",
+              "100 outils gratuits dans la suite Tools.",
+            ].map((goal, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-2 text-[14.4px] text-[#3c4043]"
               >
-                Création de CV
-              </Link>{" "}
-              sans aucune restriction de session.
-            </p>
-          </div>
-
-          {/* Analyse de l'écosystème globale */}
-          <div className="mt-16 grid md:grid-cols-2 gap-8 md:gap-12 text-[15.5px] text-zinc-400 leading-relaxed">
-            <div>
-              <h3 className="text-white text-[21px] font-semibold mb-3 tracking-tight">
-                Pourquoi un écosystème interconnecté ?
-              </h3>
-              <p>
-                Une authentification unifiée unique (SSO) vous ouvre les portes
-                de nos modules passés et futurs :{" "}
-                <span className="text-zinc-300 font-mono text-[14px]">
-                  Tools
+                <span className="text-[#137333] mt-0.5 text-[18px] leading-none">
+                  ✓
                 </span>
-                ,{" "}
-                <span className="text-zinc-300 font-mono text-[14px]">AI</span>,{" "}
-                <span className="text-zinc-300 font-mono text-[14px]">
-                  Book
-                </span>{" "}
-                ou encore{" "}
-                <span className="text-zinc-300 font-mono text-[14px]">
-                  Flow
-                </span>
-                . Cette standardisation garantit un langage de design fluide,
-                une portabilité totale de vos préférences et l'assurance d'un
-                export libre de vos données via des API ouvertes.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-white text-[21px] font-semibold mb-3 tracking-tight">
-                Infrastructures Local-First & Global-Ready
-              </h3>
-              <p>
-                Notre priorité stratégique est de fournir un service
-                irréprochable sur les marchés émergents d'Afrique francophone
-                avant d'étendre nos architectures à l'échelle mondiale. Pour ce
-                faire, nos infrastructures s'appuient sur des serveurs
-                distribués en grappes (Edge nodes) en Amérique du Nord, en
-                Europe et en Afrique, associés à une télémétrie de pointe via
-                OpenTelemetry pour maintenir un niveau de disponibilité
-                constant.
-              </p>
-            </div>
+                {goal}
+              </div>
+            ))}
           </div>
+        </section>
 
-          {/* Liens d'actions */}
-          <div className="mt-16 flex gap-4 flex-wrap items-center">
-            <Link
-              href="/outils"
-              className="rounded-full bg-white text-zinc-900 px-6 py-3 text-[14.5px] font-semibold hover:bg-zinc-200 transition-colors shadow-md"
-            >
-              Explorer les outils gratuits
-            </Link>
-            <Link
-              href="/a-propos"
-              className="text-zinc-400 hover:text-white px-3 py-3 text-[14.5px] font-medium transition-colors"
-            >
-              Découvrir notre histoire →
-            </Link>
-          </div>
+        {/* Call to action */}
+        <div className="mt-10 flex gap-4 flex-wrap">
+          <Link
+            href="/outils"
+            className="bg-[#1a73e8] text-white px-5 py-3 rounded-full text-[14.5px] font-[560] hover:bg-[#1765cc]"
+          >
+            Explorer les outils gratuits →
+          </Link>
+          <Link
+            href="/produits"
+            className="text-[#1a73e8] px-3 py-3 text-[14.5px] hover:underline"
+          >
+            Tous les produits →
+          </Link>
         </div>
       </main>
     </div>

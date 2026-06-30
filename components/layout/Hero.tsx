@@ -1,258 +1,310 @@
-'use client'
+// components/Hero.tsx
+"use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Search, Wrench, Layers, Globe, Sparkles, CalendarCheck, Radio } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { ecoApps, colorMap } from "@/data/apps";
+import { tools } from "@/data/tools";
+
+const appIcons: Record<string, any> = {
+  tools: Wrench,
+  flow: Layers,
+  now: Globe,
+  ai: Sparkles,
+  book: CalendarCheck,
+  pulse: Radio,
+};
 
 export default function Hero() {
+  const [q, setQ] = useState("");
+  const toolResults = q
+    ? tools
+      .filter((t) =>
+        (t.name + " " + t.h1 + " " + t.keywords.join(" "))
+          .toLowerCase()
+          .includes(q.toLowerCase())
+      )
+      .slice(0, 6)
+    : [];
+  const appResults = q
+    ? ecoApps.filter((a) =>
+      (a.name + " " + a.description + " " + a.subtitle)
+        .toLowerCase()
+        .includes(q.toLowerCase())
+    )
+    : [];
+
   return (
-    <section
-      id="vision"
-      className="relative min-h-[96vh] flex items-center overflow-hidden bg-[#08080d]"
-    >
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 sb-grid opacity-[0.58] [mask-image:radial-gradient(1100px_700px_at_50%_20%,black,transparent)]" />
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-58px] w-[980px] h-[640px] aurora-orb opacity-90" />
-        {/* Orb / Mesh */}
-        <div className="absolute left-1/2 top-[124px] -translate-x-1/2">
-          <div className="relative w-[740px] h-[420px] opacity-[0.85]">
-            {/* glow center */}
-            <div className="absolute left-1/2 top-[168px] -translate-x-1/2 w-[270px] h-[128px] rounded-full blur-[70px] bg-[radial-gradient(circle_at_center,rgba(174,164,255,.55),rgba(120,186,255,.18),transparent_72%)]" />
-            {/* orbital rings */}
-            <motion.svg
-              viewBox="0 0 740 420"
-              className="absolute inset-0 w-full h-full"
-              fill="none"
-            >
-              <defs>
-                <linearGradient
-                  id="orbStroke"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-                  <stop offset="18%" stopColor="#dcd8ff" stopOpacity="0.9" />
-                  <stop offset="50%" stopColor="#ffffff" stopOpacity="0.72" />
-                  <stop offset="82%" stopColor="#dbff9c" stopOpacity="0.56" />
-                  <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <motion.ellipse
-                cx="370"
-                cy="208"
-                rx="324"
-                ry="92"
-                stroke="url(#orbStroke)"
-                strokeWidth="1.15"
-                opacity="0.92"
-                initial={{ rotate: -8 }}
-                animate={{ rotate: 8 }}
-                transition={{
-                  duration: 18,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                }}
-                style={{ transformOrigin: "370px 208px" }}
-              />
-              <ellipse
-                cx="370"
-                cy="208"
-                rx="247"
-                ry="76"
-                stroke="rgba(255,255,255,0.19)"
-                strokeWidth="1"
-              />
-              <ellipse
-                cx="370"
-                cy="208"
-                rx="167"
-                ry="55"
-                stroke="rgba(255,255,255,0.16)"
-                strokeWidth="1"
-              />
-              {/* tick marks */}
-              <g
-                opacity="0.9"
-                stroke="rgba(255,255,255,0.76)"
-                strokeWidth="1.1"
-              >
-                <line x1="370" y1="116" x2="370" y2="128" />
-                <line x1="370" y1="288" x2="370" y2="300" />
-                <line x1="46" y1="208" x2="60" y2="208" />
-                <line x1="680" y1="208" x2="694" y2="208" />
-              </g>
-              {/* nodes */}
-              {[
-                [370 - 247, 208],
-                [370 + 247, 208],
-                [370 - 120, 208 - 42],
-                [370 + 124, 208 + 41],
-              ].map(([x, y], i) => (
-                <g key={i}>
-                  <circle cx={x} cy={y} r="3.6" fill="white" opacity="0.95" />
-                  <circle cx={x} cy={y} r="8.4" fill="white" opacity="0.07" />
-                </g>
-              ))}
-            </motion.svg>
-          </div>
-        </div>
-        {/* bottom vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_50%_-40px,transparent,transparent_45%,#08080d_80%)] pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-[320px] bg-gradient-to-t from-[#08080d] via-[#08080d]/92 to-transparent" />
-        <div className="sb-noise absolute inset-0" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pt-36 pb-24 md:pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/[0.11] bg-white/[0.035] px-3.5 py-1.6 text-[11.5px] text-zinc-300"
-        >
-          <span className="inline-block size-1.5 rounded-full bg-[#e7ff90]" />
-          Scryboo Ecosystem · v2.4 · Live
-          <span className="text-zinc-500">—</span>
-          <span className="font-mono text-zinc-400">Innovation • Afrique</span>
-        </motion.div>
-
-        <h1 className="mt-8 max-w-[980px] font-display text-[46px] sm:text-[68px] md:text-[86px] lg:text-[98px] leading-[0.935] tracking-[-0.035em] text-[#f2f2f7]">
-          <motion.span
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: {
-                transition: { staggerChildren: 0.058, delayChildren: 0.08 },
-              },
-            }}
-            className="block"
+    <section className="bg-white">
+      <div className="max-w-[1160px] mx-auto px-5 sm:px-8 lg:px-10 pt-10 sm:pt-14 pb-12">
+        {/* Brand header */}
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-3"
           >
-            {["L'écosystème", "technologique"].map((w) => (
-              <span
-                key={w}
-                className="inline-block overflow-hidden pb-[0.08em] mr-[0.24em] align-bottom"
-              >
-                <motion.span
-                  variants={{
-                    hidden: { y: "110%", opacity: 0 },
-                    show: {
-                      y: "0%",
-                      opacity: 1,
-                      transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
-                    },
-                  }}
-                  className="inline-block will-change-transform"
-                >
-                  {w}
-                </motion.span>
-              </span>
-            ))}
-          </motion.span>
-          <motion.span
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: {
-                transition: { staggerChildren: 0.052, delayChildren: 0.38 },
-              },
-            }}
-            className="block text-zinc-400/95"
-          >
-            {["qui", "propulse", "vos", "idées."].map((w) => (
-              <span
-                key={w}
-                className="inline-block overflow-hidden pb-[0.08em] mr-[0.27em] align-bottom"
-              >
-                <motion.span
-                  variants={{
-                    hidden: { y: "108%", opacity: 0 },
-                    show: {
-                      y: "0%",
-                      opacity: 1,
-                      transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] },
-                    },
-                  }}
-                  className="inline-block will-change-transform"
-                >
-                  {w}
-                </motion.span>
-              </span>
-            ))}
-          </motion.span>
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.78, duration: 0.55 }}
-          className="mt-7 md:mt-8 max-w-[720px] text-[17.5px] md:text-[19.3px] leading-relaxed text-zinc-400"
-        >
-          Scryboo conçoit des applications rapides, sans friction et pensées
-          pour la productivité quotidienne. Un hub unifié, privacy-by-design,
-          adapté aux contextes locaux — Afrique francophone et au-delà.
-          <span className="text-zinc-300">
-            {" "}
-            La majorité des outils sont 100% gratuits, Made in Africa.
-          </span>
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.92, duration: 0.5 }}
-          className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-        >
-          <a
-            href="https://app.scryboo.com"
-            className="group inline-flex items-center gap-3 rounded-full bg-[#f1f1f6] text-zinc-900 font-[630] px-[22px] py-[14px] text-[15.3px] shadow-[0_8px_36px_rgba(255,255,255,0.08)] hover:bg-white transition"
-          >
-            Ouvrir Scryboo Tools
-            <span className="w-7 h-7 rounded-full bg-zinc-900/90 text-zinc-100 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">
-              <ArrowUpRight size={16} />
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[16px] bg-[#1a73e8] text-white flex items-center justify-center font-display text-[28px] shadow-sm">
+              S
+            </div>
+            <span className="font-display text-[40px] sm:text-[50px] tracking-[-0.025em] text-[#202124]">
+              scryboo
             </span>
-          </a>
-          <a
-            href="#produits"
-            className="text-[14.6px] text-zinc-300 hover:text-white px-2 py-2"
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.42 }}
+            className="mt-3 text-[24px] sm:text-[30px] md:text-[34px] text-[#202124] font-[620] tracking-[-0.017em]"
           >
-            Découvrir l’écosystème →
-          </a>
+            L’écosystème d’applications qui propulse vos idées.
+          </motion.h1>
+          <p className="mt-2 text-[15.8px] sm:text-[16.8px] text-[#5f6368] max-w-[760px] mx-auto">
+            6 apps interconnectées — Tools, Flow ERP, Now Sites, AI, Book, Pulse —{" "}
+            <b className="text-[#137333] font-[600]">
+              95% gratuit, Innovante Africa
+            </b>
+            , privacy-by-design, pensé Pour vous.
+          </p>
+        </div>
+
+        {/* Search */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, duration: 0.4 }}
+          className="mt-7 max-w-[680px] mx-auto"
+        >
+          <div className="relative">
+            <Search
+              className="absolute left-[18px] top-1/2 -translate-y-1/2 text-[#5f6368]"
+              size={20}
+            />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Rechercher une app ou un outil : Flow, Now, compresser PDF, QR…"
+              className="w-full h-[54px] sm:h-[56px] pl-12 pr-5 rounded-full border border-[#dfe1e5] bg-white text-[16px] text-[#202124] shadow-[0_1px_1px_rgba(0,0,0,.06)] focus:outline-none focus:shadow-[0_1px_6px_rgba(32,33,36,.28)] focus:border-[#dfe1e5]"
+            />
+          </div>
+          <div className="flex justify-center gap-3 mt-3 flex-wrap">
+            <Link
+              href="/outils"
+              className="px-[18px] py-[9px] rounded-[6px] bg-[#f8f9fa] border border-[#f8f9fa] text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-sm"
+            >
+              Explorer l’écosystème
+            </Link>
+            <a
+              href="https://app.scryboo.com"
+              className="px-[18px] py-[9px] rounded-[6px] bg-[#f8f9fa] border border-[#f8f9fa] text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-sm"
+            >
+              J’ai de la chance
+            </a>
+          </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.07 }}
-          className="mt-10 flex flex-wrap items-center gap-7 text-[12.8px] text-zinc-400"
-        >
-          <div className="flex -space-x-2">
-            {["#bbaaff", "#ffe49a", "#9fd3ff", "#e8ffb7"].map((c, i) => (
-              <div
-                key={i}
-                style={{ backgroundColor: c }}
-                className="w-7 h-7 rounded-full ring-[2.5px] ring-[#0b0b12]"
-              />
-            ))}
+        {/* APPS ECOSYSTEM - always visible */}
+        <div className="mt-12 sm:mt-14">
+          <div className="flex items-center justify-between mb-4 px-1">
+            <h2 className="text-[17.5px] sm:text-[19px] font-[620] text-[#202124]">
+              Apps de l’écosystème
+            </h2>
+            <Link
+              href="/produits"
+              className="text-[13.8px] text-[#1a73e8] hover:underline"
+            >
+              Voir tout →
+            </Link>
           </div>
-          <div>
-            14k+ créateurs <span className="text-zinc-500">·</span> 95% gratuit{" "}
-            <span className="text-zinc-500">·</span> 99.98% uptime
+
+          {/* If search */}
+          {q ? (
+            <div>
+              {appResults.length > 0 && (
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                  {appResults.map((app) => {
+                    const Icon = appIcons[app.id] || Wrench;
+                    const c = colorMap[app.color];
+                    return (
+                      <a
+                        key={app.id}
+                        href={app.url}
+                        className="g-card p-5 block group"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div
+                            className={`w-11 h-11 rounded-[13px] flex items-center justify-center ${c.bg}`}
+                          >
+                            <Icon size={20} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-[17px] font-[620] text-[#202124]">
+                              {app.name}
+                            </div>
+                            <div className="text-[12.8px] text-[#5f6368]">
+                              {app.subtitle}
+                            </div>
+                          </div>
+                          {app.badge && (
+                            <span className="text-[11px] px-2 py-1 rounded-full bg-[#f1f3f4] text-[#3c4043]">
+                              {app.badge}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[13.7px] text-[#5f6368] mt-3">
+                          {app.description}
+                        </p>
+                        <div className="text-[12.4px] text-[#1a73e8] mt-3">
+                          {app.domain} →
+                        </div>
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
+              {toolResults.length > 0 && (
+                <>
+                  <div className="text-[13.5px] text-[#5f6368] mb-2">
+                    Outils correspondants
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    {toolResults.map((t) => (
+                      <Link
+                        key={t.slug}
+                        href={`/outils/${t.slug}`}
+                        className="g-card px-4 py-3 text-[14px] text-[#1a73e8] hover:underline"
+                      >
+                        {t.name}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+              {appResults.length === 0 && toolResults.length === 0 && (
+                <div className="text-[14.5px] text-[#5f6368] py-8 text-center">
+                  Aucun résultat pour “{q}”.{" "}
+                  <Link href="/outils" className="text-[#1a73e8]">
+                    Voir tous les outils
+                  </Link>
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Default apps grid - 6 apps */
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+              {ecoApps.map((app) => {
+                const Icon = appIcons[app.id] || Wrench;
+                const c = colorMap[app.color];
+                return (
+                  <a
+                    key={app.id}
+                    href={app.url}
+                    className={`g-card p-[22px] group relative ${app.highlight ? "ring-[1.5px] ring-[#1a73e8]/18" : ""
+                      }`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div
+                        className={`w-12 h-12 rounded-[14px] flex items-center justify-center ${c.bg}`}
+                      >
+                        <Icon size={22} />
+                      </div>
+                      <div className="text-right">
+                        {app.badge && (
+                          <span className="text-[11.3px] px-[9px] py-[4px] rounded-full bg-[#f1f3f4] text-[#3c4043] font-[500]">
+                            {app.badge}
+                          </span>
+                        )}
+                        <div className="text-[11.7px] text-[#70757a] mt-1 font-mono">
+                          {app.domain}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-4 text-[19.5px] font-[650] text-[#202124] tracking-[-0.012em]">
+                      {app.name}
+                    </div>
+                    <div className="text-[13.4px] text-[#5f6368]">
+                      {app.subtitle}
+                    </div>
+                    <p className="text-[13.9px] text-[#3c4043] mt-3 leading-[1.45]">
+                      {app.description}
+                    </p>
+                    <div className="flex flex-wrap gap-[7px] mt-3">
+                      {app.features.map((f) => (
+                        <span
+                          key={f}
+                          className="text-[11.6px] px-[9px] py-[4px] rounded-full bg-[#f8f9fa] border border-[#eceff1] text-[#5f6368]"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-4 text-[13.6px] text-[#1a73e8] font-[500] group-hover:underline">
+                      Ouvrir {app.name} →
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Quick tools strip */}
+        {!q && (
+          <div className="mt-10 border-t border-[#f1f3f4] pt-7">
+            <div className="flex items-center justify-between mb-3">
+              <div className="text-[15.8px] font-[600] text-[#202124]">
+                Outils populaires — gratuits
+              </div>
+              <Link
+                href="/outils"
+                className="text-[13.5px] text-[#1a73e8] hover:underline"
+              >
+                Voir les 42 outils →
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {tools.slice(0, 12).map((t) => (
+                <Link
+                  key={t.slug}
+                  href={`/outils/${t.slug}`}
+                  className="px-3.5 py-[8px] rounded-full border border-[#dadce0] text-[13.3px] text-[#3c4043] bg-white hover:bg-[#f8f9fa]"
+                >
+                  {t.name}
+                </Link>
+              ))}
+              <Link
+                href="/outils"
+                className="px-3.5 py-[8px] text-[13.3px] text-[#5f6368]"
+              >
+                +30 autres
+              </Link>
+            </div>
+            <div className="text-[12.8px] text-[#5f6368] mt-3">
+              95% gratuit • Compte • Pub — Une startup innovante •
+              Privacy by design
+            </div>
           </div>
-          <div className="hidden md:flex items-center gap-5 text-zinc-500 font-mono text-[11.6px]">
-            <span>FREE-FOREVER</span>
-            <span>GDPR</span>
-            <span>EDGE-NA • EU • AF</span>
-          </div>
-        </motion.div>
+        )}
       </div>
 
-      {/* Bottom fade / divider */}
-      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* trust bar */}
+      <div className="border-t border-[#eceff1] bg-[#f8f9fa]/90">
+        <div className="max-w-[1160px] mx-auto px-5 sm:px-8 lg:px-10 py-[13px] text-[13px] text-[#5f6368] flex flex-wrap justify-center gap-x-6 gap-y-1.5">
+          <span>14k+ utilisateurs</span>
+          <span className="text-[#dadce0]">•</span>
+          <span>99.98% uptime</span>
+          <span className="text-[#dadce0]">•</span>
+          <span>
+            <b className="text-[#137333]">95% gratuit</b> pour toujours
+          </span>
+          <span className="text-[#dadce0]">•</span>
+          <span>Africa • Paris • Edge AF/EU/NA</span>
+        </div>
+      </div>
     </section>
   );
 }

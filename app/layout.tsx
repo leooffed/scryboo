@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script"; // Importation pour Plausible propre
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,50 +16,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.scryboo.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.scryboo.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
-  // 1. Titres dynamiques (Le template injectera automatiquement le H1 des sous-pages)
   title: {
-    default: "Scryboo | L'écosystème technologique de votre succès digital",
+    default: "Scryboo | L’écosystème technologique de votre succès digital",
     template: "%s | Scryboo",
   },
 
   description:
-    "Scryboo conçoit des applications rapides, sans friction et pensées pour la productivité. Accédez à notre suite d'outils web gratuits exécutés directement dans votre navigateur. Innovation, sécurité locale et solutions adaptées aux professionnels en Afrique francophone et au-delà.",
+    "Scryboo conçoit des applications rapides, sans friction et pensées pour la productivité. Outils web gratuits exécutés directement dans votre navigateur. Innovation locale, sécurité et solutions adaptées à l’Afrique francophone.",
 
   keywords: [
     "scryboo",
+    "Scryboo",
     "scryboo tools",
     "startup tech afrique",
-    "écosystème technologique",
     "applications productivité",
-    "generateur de QR code",
-    "convertisseur PDF en Word",
-    "generateur de website pour votre entreprise",
-    "generateur de CV en ligne",
-    "outils de compression d'images",
-    "outils de conversion de fichiers",
-    "calculateur de prix pour les freelances",
-    "creation d'une facture",
     "outils web gratuits",
-    "conversion pdf sans limite",
-    "compression image navigateur",
-    "outils ia gratuits",
-    "zéro installation",
+    "CV en ligne",
+    "générateur CV",
+    "compression PDF",
+    "conversion PDF Word",
+    "créateur site web",
+    "générateur QR code",
+    "calculateur TVA CFA",
+    "outils IA gratuits",
     "traitement local navigateur",
-    "outils francophones",
-    "générateur cv adapté",
-    "calculateur tva cfa",
-    "Outils gratuits CV",
-    "Meilleurs outils pour CV",
-    "Comment Structurer une demande d'emplois CV",
+    "confidentialité",
+    "sans publicité",
+    "Afrique francophone",
   ],
 
   authors: [{ name: "Scryboo Engineering", url: SITE_URL }],
   creator: "Scryboo",
+  publisher: "Scryboo",
 
   robots: {
     index: true,
@@ -76,7 +70,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
     languages: {
-      "fr-FR": `${SITE_URL}/fr`,
+      "fr-FR": SITE_URL,
       "en-US": `${SITE_URL}/en`,
     },
   },
@@ -85,9 +79,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
-    title: "Scryboo | Innover pour propulser vos ideas",
+    title: "Scryboo | Innover pour propulser vos idées",
     description:
-      "Découvrez Scryboo Tools et notre écosystème d'applications. Des outils professionnels gratuits, exécutés instantanément dans votre navigateur pour une confidentialité totale.",
+      "Découvrez Scryboo Tools et notre écosystème d’applications. Des outils professionnels gratuits, exécutés dans votre navigateur pour une confidentialité totale.",
     siteName: "Scryboo",
     images: [
       {
@@ -103,7 +97,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Scryboo | Outils Web & Applications Innovantes",
     description:
-      "La suite d'outils qui accélère votre quotidien numérique. Gratuit, rapide et respectueux de vos données.",
+      "La suite d’outils qui accélère votre quotidien numérique. Gratuit, rapide et respectueux de vos données.",
     images: ["/og-image-scryboo.png"],
     creator: "@ScrybooHQ",
   },
@@ -113,8 +107,13 @@ export const metadata: Metadata = {
     icon: [{ url: "/favicon.svg" }],
     apple: [{ url: "/favicon.svg", sizes: "180x180", type: "image/svg" }],
   },
+
+  // Balises supplémentaires utiles
   other: {
     "google-adsense-account": "ca-pub-3686586093852095",
+    "google-site-verification": "l9BtoazzaNN2wEZBVgSC3ADVJC-bfxLnYMqKdbi2R-k",
+    "theme-color": "#08080d",
+    "application-name": "Scryboo",
   },
 };
 
@@ -124,33 +123,53 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // FIX 1: Remplacement de "en" par "fr" pour correspondre au marché et au SEO ciblé
     <html
       lang="fr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        <meta
-          name="google-adsense-account"
-          content="ca-pub-3686586093852095"
-        ></meta>
-        <script
+        {/* Google AdSense – chargement asynchrone propre */}
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3686586093852095"
           crossOrigin="anonymous"
-        ></script>
+          strategy="afterInteractive"
+        />
+
+        {/* Plausible Analytics (actif une fois décommenté) */}
+        {/* <Script
+          src="https://plausible.io/js/script.js"
+          data-domain="scryboo.com"
+          strategy="afterInteractive"
+        /> */}
       </head>
       <body className="min-h-full flex flex-col bg-[#08080d]">
-        {/* OPTIMISATION: Intégration propre de Plausible via Next.js Script si activé à l'avenir */}
-        {/* <Script 
-          src="https://plausible.io/js/pa-85LN_PC5JgRe6vTxDXxly.js" 
-          data-domain="scryboo.com"
-          strategy="afterInteractive" 
-        /> */}
+        {/* Données structurées JSON‑LD pour l’organisation (marque forte) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Scryboo",
+              alternateName: "Scryboo Tools",
+              url: SITE_URL,
+              logo: `${SITE_URL}/favicon.svg`,
+              sameAs: [
+                "https://twitter.com/ScrybooHQ",
+                "https://linkedin.com/company/scryboo",
+                "https://github.com/scryboo",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: "hello@scryboo.com",
+                contactType: "customer service",
+              },
+            }),
+          }}
+        />
 
-        {/* FIX 2: Le composant Analytics vit désormais obligatoirement dans le body */}
         <Analytics />
-
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

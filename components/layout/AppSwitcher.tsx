@@ -1,15 +1,8 @@
-'use client'
+// components/AppSwitcher.tsx
+"use client";
 
 import { motion } from "framer-motion";
-import {
-  Wrench,
-  Sparkles,
-  Layers,
-  CalendarDays,
-  Radio,
-  ShieldCheck,
-} from "lucide-react";
-import Link from "next/link";
+import { Wrench, Sparkles, Layers, CalendarDays, Radio, ShieldCheck } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 const apps = [
@@ -92,7 +85,7 @@ export default function AppSwitcher({ onClose }: { onClose: () => void }) {
       </div>
       <div className="grid grid-cols-3 gap-[10px]">
         {apps.map((a) => (
-          <Link
+          <a
             key={a.name}
             href={`https://${a.domain}`}
             className="group rounded-[16px] bg-white/[0.032] border border-white/[0.08] hover:bg-white/[0.06] hover:border-white/[0.14] transition px-3 py-3.5"
@@ -111,17 +104,17 @@ export default function AppSwitcher({ onClose }: { onClose: () => void }) {
             <div className="text-[10.4px] text-zinc-500 mt-1.5 font-mono">
               {a.domain.replace("scryboo.com", "")}
             </div>
-          </Link>
+          </a>
         ))}
       </div>
       <div className="flex items-center justify-between pt-3.5 mt-3 border-t border-white/[0.082] px-2 text-[12.6px]">
         <span className="text-zinc-400">SSO unifié • Accès instantané</span>
-        <Link
+        <a
           href="https://app.scryboo.com"
           className="text-zinc-200 hover:text-white font-[550]"
         >
           Voir tout →
-        </Link>
+        </a>
       </div>
     </motion.div>
   );

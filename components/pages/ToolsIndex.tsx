@@ -1,93 +1,62 @@
+// app/outils/page.tsx
 import { toolsByCategory } from "@/data/tools";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { generateSeoObject } from "@/lib/seo";
 
-// 1. Configuration SEO native (Indexation maximale du catalogue)
-export const metadata: Metadata = {
-  title: "Tous les outils en ligne gratuits — Écosystème Scryboo",
+
+export const metadata: Metadata = generateSeoObject({
+  title: "Tous les outils Scryboo — Gratuit, local, sans pub",
   description:
-    "Explorez plus de 40 outils web professionnels et gratuits : PDF, gestion d'images, édition de texte et utilitaires de développement. Traitement 100% local et sécurisé.",
-  alternates: {
-    canonical: "https://scryboo.com/outils",
-  },
-};
+    "42 outils web gratuits : PDF, images, texte, dev, QR. 100% local, privacy-by-design. Comme Google : gratuit pour toujours.",
+  canonicalPath: "/outils",
+});
 
 export default function ToolsIndex() {
   return (
-    <div className="min-h-screen bg-[#08080d] text-zinc-100">
-      <main className="pt-32 max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 pb-24">
-        {/* En-tête */}
-        <div className="max-w-2xl">
-          <div className="text-[11.7px] uppercase tracking-widest text-zinc-500 font-mono">
-            Catalogue général · Solutions en ligne
+    <div className="min-h-screen bg-white text-[#202124]">
+      <main className="max-w-[1100px] mx-auto px-5 sm:px-8 lg:px-10 py-12">
+        <h1 className="text-[32px] sm:text-[40px] font-[650] tracking-[-0.022em]">
+          Tous les outils Scryboo
+        </h1>
+        <p className="text-[#5f6368] mt-2 text-[16px] max-w-2xl">
+          Pages SEO dédiées (scryboo.com/outils/…) qui redirigent vers
+          app.scryboo.com — stratégie Pont.
+        </p>
+        <div className="mt-5 inline-flex items-center gap-2 text-[13.8px] bg-[#e6f4ea] text-[#137333] px-3 py-1.5 rounded-full font-[500]">
+          95% gratuit • Sans pub • Comme Google
+        </div>
+
+        {Object.entries(toolsByCategory).map(([cat, list]) => (
+          <div key={cat} className="mt-10">
+            <h2 className="text-[18px] font-[620] text-[#202124] mb-4">
+              {cat}
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {list.map((t) => (
+                <Link
+                  key={t.slug}
+                  href={`/outils/${t.slug}`}
+                  className="g-card p-5"
+                >
+                  <div className="text-[16.8px] font-[600] text-[#1a73e8]">
+                    {t.name}
+                  </div>
+                  <div className="text-[13.6px] text-[#5f6368] mt-1">
+                    {t.tagline}
+                  </div>
+                  <div className="text-[11.8px] text-[#70757a] mt-3 font-mono">
+                    scryboo.com/outils/{t.slug}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-          <h1 className="font-display text-[42px] md:text-[56px] tracking-[-0.025em] mt-2 font-bold text-white leading-tight">
-            Tous les outils Scryboo.
-          </h1>
-          <p className="text-zinc-400 mt-3 text-[16.8px] leading-relaxed">
-            Une collection complète d'applications web instantanées, conçues
-            pour éliminer les frictions de vos flux de travail quotidiens. Zéro
-            installation, exécution immédiate.
-          </p>
-        </div>
-
-        {/* Bannière de réassurance modèle économique */}
-        <div className="mt-10 rounded-[20px] border border-[#e6ff9c]/10 bg-[linear-gradient(180deg,rgba(226,255,123,0.04),rgba(226,255,123,0.01))] px-6 py-5 text-[14.5px] text-[#e3f9c7] leading-relaxed backdrop-blur-sm">
-          <span className="font-semibold text-white">
-            95% de nos outils sont gratuits sans contrepartie.
-          </span>{" "}
-          De manière innovante, nous choisissons de laisser l'accès libre pour
-          les utilisateurs individuels et de ne monétiser que les volumes
-          professionnels et les intégrations API avancées.
-        </div>
-
-        {/* Listes par catégories */}
-        <div className="mt-16 space-y-14">
-          {Object.entries(toolsByCategory).map(([categoryName, toolList]) => (
-            <section key={categoryName} className="scroll-mt-28">
-              <h2 className="text-[14px] uppercase tracking-wider text-zinc-400 font-mono font-semibold mb-5 border-b border-white/[0.06] pb-2">
-                {categoryName}
-              </h2>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {toolList.map((t) => (
-                  <Link
-                    key={t.slug}
-                    href={`/outils/${t.slug}`}
-                    className="group rounded-[18px] bg-white/[0.015] border border-white/[0.08] p-5 hover:border-white/[0.18] hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between min-h-[140px]"
-                  >
-                    <div>
-                      <h3 className="text-[17px] font-semibold text-zinc-100 group-hover:text-white transition-colors tracking-tight">
-                        {t.name}
-                      </h3>
-                      <p className="text-[13.6px] text-zinc-400 mt-1.5 leading-relaxed line-clamp-2">
-                        {t.tagline}
-                      </p>
-                    </div>
-
-                    <div className="text-[12px] text-zinc-500 font-mono mt-4 group-hover:text-zinc-400 transition-colors flex items-center justify-between">
-                      <span>scryboo.com/outils/{t.slug}</span>
-                      <span className="opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                        →
-                      </span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-
-        {/* Footer Technique Éco-système (Utile pour rassurer les pros sans polluer la UI) */}
-        <div className="mt-20 text-[13px] text-zinc-500 border-t border-white/[0.06] pt-8 leading-relaxed max-w-3xl">
-          <p>
-            Toutes les opérations de traitement de fichiers s'exécutent au sein
-            de votre client de navigation grâce à la puissance de nos
-            architectures locales. Vos données et documents ne transitent par
-            aucun serveur externe, garantissant une confidentialité absolue
-            (Privacy by Design).
-          </p>
-        </div>
+        ))}
+        <p className="text-[13.4px] text-[#5f6368] mt-10">
+          Backlinks → <b>scryboo.com/outils/…</b> — canonical vers le domaine
+          principal.
+        </p>
       </main>
     </div>
   );
